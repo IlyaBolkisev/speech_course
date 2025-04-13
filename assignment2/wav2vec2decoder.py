@@ -1,4 +1,6 @@
+import math
 from typing import List, Tuple
+from itertools import groupby
 
 import kenlm
 import torch
@@ -48,8 +50,11 @@ class Wav2Vec2Decoder:
         Returns:
             str: Decoded transcript
         """
-        # <YOUR CODE GOES HERE>
-        return
+        pred_ids = torch.argmax(logits, dim=-1).tolist()
+        collapsed = [token for token, _ in groupby(pred_ids)
+                     if token != self.blank_token_id]
+        transcript = "".join([self.vocab[t] for t in collapsed]).replace(self.word_delimiter, " ").strip()
+        return transcript
 
     def beam_search_decode(self, logits: torch.Tensor, return_beams: bool = False):
         """
@@ -67,10 +72,37 @@ class Wav2Vec2Decoder:
                 (List[Tuple[List[int], float]]) - If return_beams is True, returns a list of tuples
                     containing hypotheses and log probabilities.
         """
-        # <YOUR CODE GOES HERE>
+        log_probs = torch.nn.functional.log_softmax(logits, dim=-1)
+
+        beams = [(0.0, [])]
+        for t in range(log_probs.shape[0]):
+            new_beams = {}
+            for score, hyp in beams:
+                for v in range(log_probs.shape[1]):
+                    token_log_prob = log_probs[t, v].item()
+                    new_score = score + token_log_prob
+                    if v == self.blank_token_id:
+                        new_hyp = tuple(hyp)
+                    else:
+                        if len(hyp) > 0 and v == hyp[-1]:
+                            new_hyp = tuple(hyp)
+                        else:
+                            new_hyp = tuple(hyp + [v])
+                    if new_hyp in new_beams:
+                        prev_score = new_beams[new_hyp]
+                        max_val = max(prev_score, new_score)
+                        new_beams[new_hyp] = max_val + math.log1p(math.exp(-abs(prev_score - new_score)))
+                    else:
+                        new_beams[new_hyp] = new_score
+
+            beams = sorted([(score, list(hyp)) for hyp, score in new_beams.items()],
+                           key=lambda x: x[0], reverse=True)[:self.beam_width]
+
         if return_beams:
             return beams
         else:
+            best_hypothesis = [t for t in beams[0][1] if t != self.blank_token_id]
+            best_hypothesis = "".join([self.vocab[t] for t in best_hypothesis]).replace(self.word_delimiter, " ").strip()
             return best_hypothesis
 
     def beam_search_with_lm(self, logits: torch.Tensor) -> str:
@@ -87,9 +119,44 @@ class Wav2Vec2Decoder:
         """
         if not self.lm_model:
             raise ValueError("KenLM model required for LM shallow fusion")
-        
-        # <YOUR CODE GOES HERE>
-        return
+
+        log_probs = torch.nn.functional.log_softmax(logits, dim=-1)
+
+        beams = [(0.0, [])]
+        for t in range(log_probs.shape[0]):
+            new_beams = {}
+            for score, hyp in beams:
+                for v in range(log_probs.shape[1]):
+                    token_log_prob = log_probs[t, v].item()
+                    new_score = score + token_log_prob
+                    if v == self.blank_token_id:
+                        new_hyp = tuple(hyp)
+                    else:
+                        if len(hyp) > 0 and v == hyp[-1]:
+                            new_hyp = tuple(hyp)
+                        else:
+                            new_hyp = tuple(hyp + [v])
+                    hyp_str = (
+                        "".join([self.vocab[token] for token in new_hyp
+                                 if t != self.blank_token_id])
+                        .replace(self.word_delimiter, " ").strip()
+                    )
+                    lm_score = self.lm_model.score(hyp_str, bos=False, eos=False) if hyp_str != "" else 0.0
+                    total_score = new_score + self.alpha * lm_score + self.beta * hyp_str.count(" ")
+
+                    if new_hyp in new_beams:
+                        prev_score = new_beams[new_hyp]
+                        max_val = max(prev_score, total_score)
+                        new_beams[new_hyp] = max_val + math.log1p(math.exp(-abs(prev_score - total_score)))
+                    else:
+                        new_beams[new_hyp] = total_score
+
+            beams = sorted([(score, list(hyp)) for hyp, score in new_beams.items()],
+                           key=lambda x: x[0], reverse=True)[:self.beam_width]
+
+        best_hypothesis = [t for t in beams[0][1] if t != self.blank_token_id]
+        best_hypothesis = "".join([self.vocab[t] for t in best_hypothesis]).replace(self.word_delimiter, " ").strip()
+        return best_hypothesis
 
     def lm_rescore(self, beams: List[Tuple[List[int], float]]) -> str:
         """
@@ -103,8 +170,21 @@ class Wav2Vec2Decoder:
         """
         if not self.lm_model:
             raise ValueError("KenLM model required for LM rescoring")
-        # <YOUR CODE GOES HERE>
-        return
+
+        best_score = -float("inf")
+        best_transcript = ""
+        for score, hyp in beams:
+            hyp_str = (
+                "".join([self.vocab[token] for token in hyp
+                         if token != self.blank_token_id])
+                .replace(self.word_delimiter, " ").strip()
+            )
+            lm_score = self.lm_model.score(hyp_str, bos=False, eos=False)
+            total_score = score + self.alpha * lm_score + self.beta * hyp.count(" ")
+            if total_score > best_score:
+                best_score = total_score
+                best_transcript = hyp_str
+        return best_transcript
 
     def decode(self, audio_input: torch.Tensor, method: str = "greedy") -> str:
         """

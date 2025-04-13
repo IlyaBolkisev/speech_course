@@ -1,0 +1,164 @@
+2025-04-13 10:00:42.018555: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1744538442.060843   30770 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1744538442.073498   30770 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-04-13 10:00:42.119221: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Some weights of Wav2Vec2ForCTC were not initialized from the model checkpoint at facebook/wav2vec2-base-960h and are newly initialized: ['wav2vec2.masked_spec_embed']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading the LM will be faster if you build a binary file.
+Reading /content/speech_course/assignment2/lm/3-gram.pruned.1e-7.arpa.gz
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+============================================================
+Target transcription
+IF YOU ARE GENEROUS HERE IS A FITTING OPPORTUNITY FOR THE EXERCISE OF YOUR MAGNANIMITY IF YOU ARE PROUD HERE AM I YOUR RIVAL READY TO ACKNOWLEDGE MYSELF YOUR DEBTOR FOR AN ACT OF THE MOST NOBLE FORBEARANCE
+------------------------------------------------------------
+greedy decoding
+IF YOU ARE GENEROUS HERE IS A FITTING OPPORTUNITY FOR THE EXERCISE OF YOUR MAGNANIMITY IF YOU ARE PROUD HERE AM I YOUR RIVAL RETER TO ACKNOWLEDGE MYSELF YOUR DEPTOR FOR AN ACT OF MOST NOBLE FORBEARANCE
+Character-level Levenshtein distance: 8
+------------------------------------------------------------
+beam decoding
+IF YOU ARE GENEROUS HERE IS A FITING OPORTUNITY FOR THE EXERCISE OF YOUR MAGNANIMITY IF YOU ARE PROUD HERE AM I YOUR RIVAL RETHER TO CKNOWLEDGE MYSELF YOUR DEPTOR FOR AN ACT OF MOST NOBLE FORBEARANCE
+Character-level Levenshtein distance: 12
+------------------------------------------------------------
+beam_lm decoding
+IF YOU ARE ANROUS HERE IS A FITFTING OPORTUNITY OR THE EXNERCISE OF OUR IMITY IF YOU ARE PRLOUD HEREAM YHOURIVAL ADHERTOACKNOWLEDGE MYCSELF YOURD EQTOR OR A ACST OF MLOST OBLEFORBEARANCE
+Character-level Levenshtein distance: 41
+------------------------------------------------------------
+beam_lm_rescore decoding
+IF YOU ARE GENEROUS HERE IS A FITING OPORTUNITY FOR THE EXERCISE OF YOUR MAGNANIMITY IF YOU ARE PROUD HERE AM I YOUR RIVAL RETHER TO CKNOWLEDGE MYSELF YOUR DEBTOR FOR AN ACT OF MOST NOBLE FORBEARANCE
+Character-level Levenshtein distance: 11
+============================================================
+Target transcription
+AND IF ANY OF THE OTHER COPS HAD PRIVATE RACKETS OF THEIR OWN IZZY WAS UNDOUBTEDLY THE MAN TO FIND IT OUT AND USE THE INFORMATION WITH A BEAT SUCH AS THAT EVEN GOING HALVES AND WITH ALL THE GRAFT TO THE UPPER BRACKETS HE'D STILL BE ABLE TO MAKE HIS PILE IN A MATTER OF MONTHS
+------------------------------------------------------------
+greedy decoding
+AND IF ANY OF THE OTHER COPS HAD PRIVATE RACKETS OF THEIR OWN IZZY WAS UNDOUBTEDLY THE MAN TO FIND IT OUT AND USE THE INFORMATION WITH A BEAT SUCH AS THAT EVEN GOING HALVES AND WITH ALL THE GRAFT TO THE UPPER BRACKETS HE'D STILL BE ABLE TO MAKE HIS PILE IN A MATTER OF MONTHS
+Character-level Levenshtein distance: 0
+------------------------------------------------------------
+beam decoding
+AND IF ANY OF THE OTHER COPS HAD PRIVATE RACKETS OF THEIR OWN IZIY WAS UNDOUBTEDLY THE MAN TO FIND IT OUT AND USE THE INFORMATION WITH A BEAT SUCH AS THAT EVEN GOING HALVES AND WITH AL THE GRAFT TO THE UPER BRACKETS HE'D STIL BE ABLE TO MAKE HIS PILE IN A MATER OF MONTHS
+Character-level Levenshtein distance: 5
+------------------------------------------------------------
+beam_lm decoding
+IF ANY OF THE OTHER APS HAD RIVATE ATCKETS OF THE WN ISZIY WAS UNDOUBTEDLY THE MAN TO FIND IT OUT AND USE THE INFORMATIONO WITH A BEAT SUCH AS THE 'N GOIG A'LVES 'ANDWITHAL THE GRLAFT OF UPER ATCKETS E'L SILY BHE ABL TO MAKE HIS LE IN MANTER OF ONTHS
+Character-level Levenshtein distance: 49
+------------------------------------------------------------
+beam_lm_rescore decoding
+AND IF ANY OF THE OTHER COPS HAD PRIVATE RACKETS OF THEIR OWN IZIY WAS UNDOUBTEDLY THE MAN TO FIND IT OUT AND USE THE INFORMATION WITH A BEAT SUCH AS THAT EVEN GOING HALVES AND WITH AL THE GRAFT TO THE UPER BRACKETS HE'D STIL BE ABLE TO MAKE HIS PILE IN A MATER OF MONTHS
+Character-level Levenshtein distance: 5
+============================================================
+Target transcription
+GUESS A MAN GETS USED TO ANYTHING HELL MAYBE I CAN HIRE SOME BUMS TO SIT AROUND AND WHOOP IT UP WHEN THE SHIPS COME IN AND BILL THIS AS A REAL OLD MARTIAN DEN OF SIN
+------------------------------------------------------------
+greedy decoding
+GUESS A MAN GETS USED TO ANYTHING HELL MAYBE I CAN HIRE SOME BUMS TO SIT AROUND AND WHOOP IT UP WHEN THE SHIPS COME IN AND BILL THIS IS A REAL OLD MARTIAN DEN OF SIN
+Character-level Levenshtein distance: 1
+------------------------------------------------------------
+beam decoding
+GUES A MAN GETS USED TO ANYTHING HEL MAYBE I CAN HIRE SOME BUMS TO SIT AROUND AND WHOP IT UP WHEN THE SHIPS COME IN AND BUIL THIS IS A REAL OLD MARTIAN DEN OF SIN
+Character-level Levenshtein distance: 6
+------------------------------------------------------------
+beam_lm decoding
+ITS USEDTO ANRYTHING ELH AYBE I CAN ISOMEBUMS TO SIT ON AND WHOUP IT UP WHEN THE SHIEPS COMEIN 'AND BILDL THIS IS A REAL OLD MARTHIANDENOF S'IN
+Character-level Levenshtein distance: 38
+------------------------------------------------------------
+beam_lm_rescore decoding
+GUES A MAN GETS USED TO ANYTHING HEL MAYBE I CAN HIRE SOME BUMS TO SIT AROUND AND WHOP IT UP WHEN THE SHIPS COME IN AND BUIL THIS IS A REAL OLD MARTIAN DEN OF SIN
+Character-level Levenshtein distance: 6
+============================================================
+Target transcription
+IT WAS A TUNE THEY HAD ALL HEARD HUNDREDS OF TIMES SO THERE WAS NO DIFFICULTY IN TURNING OUT A PASSABLE IMITATION OF IT TO THE IMPROVISED STRAINS OF I DIDN'T WANT TO DO IT THE PRISONER STRODE FORTH TO FREEDOM
+------------------------------------------------------------
+greedy decoding
+IT WAS TE TUNE THEY HAD ALL HEARD HUNDREDS OF TIMES SO THERE WAS NO DIFFICULTY IN TURNING OUT A PASSABLE IMITATION OF IT TO THE IMPROVISED TRAINS OF I DIDN'T WANT TO DO IT THE PRISONERS STRODE FORTH TO FREEDOM
+Character-level Levenshtein distance: 4
+------------------------------------------------------------
+beam decoding
+IT WAS HE TUNE THEY HAD AL HEARD HUNDREDS OF TIMES SO THERE WAS NO DIFICULTY IN TURNING OUT A PASABLE IMITATION OF IT TO THE IMPROVISED TRAINS OF I DIDN'T WANT TO DO IT THE PRISONERS STRODE FORTH TO FREDOM
+Character-level Levenshtein distance: 8
+------------------------------------------------------------
+beam_lm decoding
+ITWAS ATUN THEYI H'D ALHEARD UN'REDS OF IMNES A THEREWAS NO IFICULTY IN URNINGAOUT PASCABLE IMITATON OFIT THE MPROVISED TRAINMS OFV DIDN'OT WNANT TO DO IT THE RISONERS TROLE FPORTH TO FHREDOM
+Character-level Levenshtein distance: 40
+------------------------------------------------------------
+beam_lm_rescore decoding
+IT WAS HE TUNE THEY HAD AL HEARD HUNDREDS OF TIMES SO THERE WAS NO DIFICULTY IN TURNING OUT A PASABLE IMITATION OF IT TO THE IMPROVISED TRAINS OF I DIDN'T WANT TO DO IT THE PRISONERS STRODE FORTH TO FREDOM
+Character-level Levenshtein distance: 8
+============================================================
+Target transcription
+MARGUERITE TIRED OUT WITH THIS LONG CONFESSION THREW HERSELF BACK ON THE SOFA AND TO STIFLE A SLIGHT COUGH PUT UP HER HANDKERCHIEF TO HER LIPS AND FROM THAT TO HER EYES
+------------------------------------------------------------
+greedy decoding
+MARGUERITE TIRED OUT WITH HIS LONG CONFESSION THREW HERSELF BACK ON THE SOFA AND TO STIFLE A SLIGHT COUGH PUT UP HER HANDKERCHIEF TO HER LIPS AND FROM THAT TO HER EYES
+Character-level Levenshtein distance: 1
+------------------------------------------------------------
+beam decoding
+MARGUERITE TIRED OUT WITH HIS LONG CONFESION THREW HERSELF BACK ON THE SOFA AND TO STIFLE A SLIGHT COUGH PUT UP HER HANDKERCHIEF TO HER LIPS AND FROM THAT TO HER EYES
+Character-level Levenshtein distance: 2
+------------------------------------------------------------
+beam_lm decoding
+AGUERITE TIHRED OUTI WITHTHISLONG COFESION THE HERSTELF ACG IN THE OFA AND TNIFLE SGHTCOUGH PULT HER ANDKRCHIEF TO HERLIPS AND FROMT THEC TO HER EYES
+Character-level Levenshtein distance: 34
+------------------------------------------------------------
+beam_lm_rescore decoding
+MARGUERITE TIRED OUT WITH HIS LONG CONFESION THREW HERSELF BACK ON THE SOFA AND TO STIFLE A SLIGHT COUGH PUT UP HER HANDKERCHIEF TO HER LIPS AND FROM THAT TO HER EYES
+Character-level Levenshtein distance: 2
+============================================================
+Target transcription
+AT THIS TIME ALL PARTICIPANTS ARE IN A LISTEN ONLY MODE
+------------------------------------------------------------
+greedy decoding
+OF THE TIME ALL PARTICIPANTS ANNELISAN ONLY MOTED
+Character-level Levenshtein distance: 15
+------------------------------------------------------------
+beam decoding
+OF THE TIME AL PARTICIPANTS ANELISAN ONLY MOTED
+Character-level Levenshtein distance: 16
+------------------------------------------------------------
+beam_lm decoding
+IN A ATYCIPANTS ANLISAN ONLIMOTED
+Character-level Levenshtein distance: 29
+------------------------------------------------------------
+beam_lm_rescore decoding
+OF THE TIME AL PARTICIPANTS ANELISAN ONLY MOKED
+Character-level Levenshtein distance: 16
+============================================================
+Target transcription
+THE INCREASE WAS MAINLY ATTRIBUTABLE TO THE NET INCREASE IN THE AVERAGE SIZE OF OUR FLEETS
+------------------------------------------------------------
+greedy decoding
+TEGREECE WAS MAINLY ATTRIBUTABLE TO N INCREASING THE AVERAGE SIZE OF OUR FLEET
+Character-level Levenshtein distance: 17
+------------------------------------------------------------
+beam decoding
+TEGRECE WAS MAINLY ATRIBUTABLE TO N INCREASING THE AVERAGE SIZE OF OUR FLET
+Character-level Levenshtein distance: 19
+------------------------------------------------------------
+beam_lm decoding
+AS MANLY ATREBUTABLE INCREASIDNG THE AVERAG SIZE OF OUR FLET
+Character-level Levenshtein distance: 35
+------------------------------------------------------------
+beam_lm_rescore decoding
+TEGRECE WAS MAINLY ATRIBUTABLE TO N INCREASING THE AVERAGE SIZE OF OUR FLET
+Character-level Levenshtein distance: 19
+============================================================
+Target transcription
+OPERATING SURPLUS IS A NON CAP FINANCIAL MEASURE WHICH IS DEFINED AS FULLY IN OUR PRESS RELEASE
+------------------------------------------------------------
+greedy decoding
+OPERATING CURPLUS IS A NON GAB FINANCIAL MEASURE WHICH IS DEFINED FULLY IN OUR PRECULIS
+Character-level Levenshtein distance: 14
+------------------------------------------------------------
+beam decoding
+OPERATING CURPLUS IS A NON GAB FINANCIAL MEASURE WHICH IS DEFINED FULY IN OUR PRESULIS
+Character-level Levenshtein distance: 14
+------------------------------------------------------------
+beam_lm decoding
+PERATING SIRPLUS IS A ANCIAL MEAGURE WHICHTIS DEYINED FHULY IN APRECULIS
+Character-level Levenshtein distance: 33
+------------------------------------------------------------
+beam_lm_rescore decoding
+OPERATING CURPLUS IS A NON GAB FINANCIAL MEASURE WHICH IS DEFINED FULY IN OUR PRESULIS
+Character-level Levenshtein distance: 14
